@@ -18,11 +18,24 @@ app.use(morgan('short'))
 
 app.get('/', function (req, res) {
     res.render('index');
-
 })
 
-app.get('/create', function (req, res) {
+app.get('/createM', function (req, res) {
   res.render('create_monkey');
+})
+
+app.get('/createE', function (req, res) {
+  res.render('create_enclosure');
+})
+
+app.post('/create_monkey', function(req, res) {
+  models.ManagerM.create({
+    name: req.body.name,
+    enclosure_name: req.body.enclosure_name
+  })
+  .then(()=> {
+    res.render('confirmationM')
+  })
 })
 
 /*// Get all the users defined
