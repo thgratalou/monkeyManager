@@ -21,6 +21,10 @@ app.get('/', function (req, res) {
 
 })
 
+app.get('/create', function (req, res) {
+  res.render('create_monkey');
+})
+
 /*// Get all the users defined
 app.get('/', function (req, res) {
   models.User.findAll()
