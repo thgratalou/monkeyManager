@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    var ManagerM = sequelize.define('monkey_manager', {
+    var ManagerM = sequelize.define('monkeys', {
       name: DataTypes.STRING,
       enclos: DataTypes.STRING
     });

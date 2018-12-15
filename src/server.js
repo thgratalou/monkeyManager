@@ -16,18 +16,33 @@ app.use(bodyParser.json())
 // Add a bit of logging
 app.use(morgan('short'))
 
+//Get the index
 app.get('/', function (req, res) {
     res.render('index');
 })
 
+//Get all the monkey
+app.get('/Monkey', function (req, res) {
+  models.MonkeyM.findAll()
+    .then((monkey) => {
+      res.json(monkey)
+    })
+})
+//Get some specified monkey with enclosure
+
+//Get a monkey with his name
+
+//Confirmation for create Monkey
 app.get('/createM', function (req, res) {
   res.render('create_monkey');
 })
 
+//Confirmation for create Enclosure
 app.get('/createE', function (req, res) {
   res.render('create_enclosure');
 })
 
+//Create a monkey
 app.post('/create_monkey', function(req, res) {
   models.ManagerM.create({
     name: req.body.name,
