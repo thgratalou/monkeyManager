@@ -1,6 +1,10 @@
 html
+    head
+        style
+            include index_style.css
     body
-        h1 Bienvenue sur la page de création d'un singe !
+        include header.pug
+        h4 Bienvenue sur la page de création d'un singe !
         form(action='/create_enclosure', method='POST')
             p
                 | Nom: 

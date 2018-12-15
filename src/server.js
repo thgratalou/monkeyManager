@@ -17,9 +17,12 @@ const models = require('./models/index');
   app.use(morgan('short'))
 
 //Get the index
-  app.get('/', function (req, res) {
+  app.get('/index', function (req, res) {
       res.render('index');
   })
+  app.get('/', function (req, res) {
+    res.render('index');
+})
 
 //Get all the monkey
   app.get('/Monkey', function (req, res) {

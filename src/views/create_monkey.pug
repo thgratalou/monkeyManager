@@ -1,6 +1,10 @@
 html
+    head
+        style
+            include index_style.css
     body
-        h1 Bienvenue sur la page de création d'un singe !
+        include header.pug
+        h4 Bienvenue sur la page de création d'un singe !
         form(action='/create_monkey', method='POST')
             p
                 | Nom: 
@@ -8,3 +12,4 @@ html
                 |          Enclos: 
                 input(type='text', name='enclosure_name', value='')
                 input(type='submit', value='Créer ce singe')
+            include footer.pug
