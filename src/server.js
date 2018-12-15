@@ -49,6 +49,24 @@ const models = require('./models/index');
     });
   })
 
+  //Get all the enclosures
+  app.get('/Enclosures', function (req, res) {
+    models.ManagerE.findAll()
+      .then((enclosure) => {
+        res.json(enclosure)
+      })
+  })
+
+//Get an Enclosure with his name
+  app.get('/Enclosure/:name/get', function(req, res){
+    models.ManagerE.findAll({
+      where: {name: req.params.name}
+    })
+    .then((enclosure) =>{
+      res.send(enclosure)
+    });
+  })
+
 //Confirmation for create Monkey
   app.get('/createM', function (req, res) {
     res.render('create_monkey');
@@ -67,6 +85,16 @@ const models = require('./models/index');
     })
     .then(()=> {
       res.render('confirmationM')
+    })
+  })
+
+  //Create an enclosure
+  app.post('/create_enclosure', function(req, res) {
+    models.ManagerE.create({
+      name: req.body.name
+    })
+    .then(()=> {
+      res.render('confirmationE')
     })
   })
 
