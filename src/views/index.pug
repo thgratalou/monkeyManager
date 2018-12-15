@@ -3,8 +3,10 @@ html
         style
             include index_style.css
     body
-        h1 Monkey Manager 3000
-        p Vous voulez créer un singe ?
-        a.button(href='createM') Créer un singe
-        p Vous voulez créer un enclos ?
-        a.button(href='createE') Créer un enclos
+        include header.pug
+        div(class="monkey")
+            p Vous voulez créer un singe ?
+            a:img(href='createM')(src="./pictures/monkey.jpg" alt="Cliquez ici !")
+        div(class="enclosure")
+            p Vous voulez créer un enclos ?
+            a:img(href='createM')(src="./pictures/enclosure.jpg" alt="Cliquez ici !")
