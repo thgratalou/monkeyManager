@@ -2,12 +2,12 @@ body{
     background-image: url("background.jpg");
 }
 
-h1{
+.TitleHeader{
     text-align: center;
     font-size: 400%;
     color: #AA6C39;
 }
-h3{
+.SubtitleHeader{
     text-align: center;
     font-size: 200%;
     color: darkgray;
