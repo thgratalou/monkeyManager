@@ -49,7 +49,7 @@ const models = require('./models/index');
     });
   })
 
-  //Get all the enclosures
+//Get all the enclosures
   app.get('/Enclosures', function (req, res) {
     models.ManagerE.findAll()
       .then((enclosure) => {

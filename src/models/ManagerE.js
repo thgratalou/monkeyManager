@@ -3,5 +3,5 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
     });
   
-    return ManagerM;
+    return ManagerE;
   };
