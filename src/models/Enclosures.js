@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-    var ManagerE = sequelize.define('enclosures', {
+    var Enclosures = sequelize.define('Enclosures', {
       name: DataTypes.STRING,
     });
   
-    return ManagerE;
+    return Enclosures;
   };

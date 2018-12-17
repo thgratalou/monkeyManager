@@ -26,35 +26,35 @@ const models = require('./models/index');
 
 //Get all the monkey
   app.get('/Monkey', function (req, res) {
-    models.MonkeyM.findAll()
+    models.Monkeys.findAll()
       .then((monkey) => {
-        res.json('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
+        res.json('monkey', pName = Monkeys.name, pEnclosure = Monkeys.enclosure)
       })
   })
 
 //Get some specified monkey with enclosure
   app.get('/Monkey/:enclosure/get', function(req, res){
-    models.MonkeyM.findAll({
+    models.Monkeys.findAll({
       where: {enclosure: req.params.enclosure}
     })
     .then((monkey) =>{
-      res.send('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
+      res.send('monkey', pName = Monkeys.name, pEnclosure = Monkeys.enclosure)
     });
   })
 
 //Get a monkey with his name
   app.get('/Monkey/:name/get', function(req, res){
-    models.MonkeyM.findAll({
+    models.Monkeys.findAll({
       where: {name: req.params.name}
     })
     .then((monkey) =>{
-      res.send('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
+      res.send('monkey', pName = Monkeys.name, pEnclosure = Monkeys.enclosure)
     });
   })
 
 //Get all the enclosures
   app.get('/Enclosures', function (req, res) {
-    models.ManagerE.findAll()
+    models.Enclosures.findAll()
       .then((enclosure) => {
         res.json(enclosure)
       })
@@ -62,7 +62,7 @@ const models = require('./models/index');
 
 //Get an Enclosure with his name
   app.get('/Enclosure/:name/get', function(req, res){
-    models.ManagerE.findAll({
+    models.Enclosures.findAll({
       where: {name: req.params.name}
     })
     .then((enclosure) =>{
@@ -82,7 +82,7 @@ const models = require('./models/index');
 
 //Create a monkey
   app.post('/create_monkey', function(req, res) {
-    models.ManagerM.create({
+    models.Monkeys.create({
       name: req.body.name,
       enclosure_name: req.body.enclosure_name
     })
@@ -93,7 +93,7 @@ const models = require('./models/index');
 
   //Create an enclosure
   app.post('/create_enclosure', function(req, res) {
-    models.ManagerE.create({
+    models.Enclosures.create({
       name: req.body.name
     })
     .then(()=> {
