@@ -28,7 +28,7 @@ const models = require('./models/index');
   app.get('/Monkey', function (req, res) {
     models.MonkeyM.findAll()
       .then((monkey) => {
-        res.json(monkey)
+        res.json('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
       })
   })
 
@@ -38,7 +38,7 @@ const models = require('./models/index');
       where: {enclosure: req.params.enclosure}
     })
     .then((monkey) =>{
-      res.send(monkey)
+      res.send('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
     });
   })
 
@@ -48,7 +48,7 @@ const models = require('./models/index');
       where: {name: req.params.name}
     })
     .then((monkey) =>{
-      res.send(monkey)
+      res.send('monkey', pName = MonkeyM.name, pEnclosure = MonkeyM.enclosure)
     });
   })
 
