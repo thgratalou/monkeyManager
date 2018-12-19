@@ -6,8 +6,13 @@ html
         include header.pug
         h4 Liste des singes :
         -var name =""
+        -var enclosure =""
+        -var id =""
         ul
-            for monkey in monkeys
+            li Nom Enclos ID
+            for monkey in Monkeys
                 - name = monkey.name
-                li #{name}
+                - enclosure = monkey.enclosure_name
+                - id = monkey.id
+                li #{name} #{enclosure} #{id}
         include footer.pug

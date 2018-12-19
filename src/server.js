@@ -27,30 +27,40 @@ const models = require('./models/index');
 })
 
 //Get all the monkey
-  app.get('/Monkey', function (req, res) {
+  app.get('/Monkeys', function (req, res) {
     models.Monkeys.findAll()
       .then((monkey) => {
-        res.render('monkey', {title : 'Les singes : ', monkeys : monkey})
+        res.render('monkey', {title : 'Les singes : ', Monkeys : monkey})
       })
   })
 
 //Get some specified monkey with enclosure
-  app.get('/Monkey/:enclosure/get', function(req, res){
-    models.Monkeys.findAll({
-      where: {enclosure: req.params.enclosure}
+  app.get('/Monkeys/:enclosure', function(req, res){
+    models.Monkeys.findAndCountAll({
+      where: {enclosure_name: req.params.enclosure_name}
     })
     .then((monkey) =>{
-      res.send('monkey', pName = Monkeys.name, pEnclosure = Monkeys.enclosure)
+      res.render('monkey', {title : 'Les singes par enclos : ', Monkeys : monkey})
     });
   })
 
 //Get a monkey with his name
-  app.get('/Monkey/:name/get', function(req, res){
-    models.Monkeys.findAll({
+  app.get('/Monkeys/:name', function(req, res){
+    models.Monkeys.findAndCountAll({
       where: {name: req.params.name}
     })
     .then((monkey) =>{
-      res.send('monkey', pName = Monkeys.name, pEnclosure = Monkeys.enclosure)
+      res.render('monkey', {title : 'Les singes : ', Monkeys : monkey})
+    });
+  })
+
+  //Get a monkey with his id
+  app.get('/Monkeys/:id', function(req, res){
+    models.Monkeys.findAndCountAll({
+      where: {name: req.params.id}
+    })
+    .then((monkey) =>{
+      res.render('monkey', {title : 'Les singes : ', Monkeys : monkey})
     });
   })
 
@@ -58,7 +68,7 @@ const models = require('./models/index');
   app.get('/Enclosures', function (req, res) {
     models.Enclosures.findAll()
       .then((enclosure) => {
-        res.json(enclosure)
+        res.render('enclosure', {title : 'Les enclos', Enclosures : enclosure})
       })
   })
 

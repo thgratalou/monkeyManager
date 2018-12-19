@@ -5,6 +5,12 @@ html
     body
         include header.pug
         h4 Liste des enclos :
+        -var name =""
+        -var id =""
         ul
-            li #{pName}
+            li Nom ID
+            for enclosure in Enclosures
+                - name = enclosure.name
+                - id = enclosure.id
+                li #{name} #{id}
         include footer.pug

@@ -24,3 +24,14 @@ body{
     width: 10%;
     height: 20%;
 }
+
+.footer{
+    background-image: url("static/pictures/footer_background.jpg");
+    background-size: cover;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
