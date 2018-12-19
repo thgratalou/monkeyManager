@@ -6,5 +6,7 @@ html
         include header.pug
         h4 Liste des singes :
         ul
-            li #{pName} #{pEnclosure}
+            for monkey in monkeys
+                - name = monkey.name
+                li
         include footer.pug

@@ -30,7 +30,7 @@ const models = require('./models/index');
   app.get('/Monkey', function (req, res) {
     models.Monkeys.findAll()
       .then((monkey) => {
-        res.json('monkey', name, enclosure_name)
+        res.render('monkey', {title : 'Les singes : ', monkeys : monkey})
       })
   })
 
