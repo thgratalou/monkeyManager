@@ -8,6 +8,8 @@ const models = require('./models/index');
 //Add the folder views to the project
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'pug');
+  
+  app.use('/static', express.static(__dirname + '/public'));
 
 // Decode json and x-www-form-urlencoded
   app.use(bodyParser.urlencoded({ extended: false }))
