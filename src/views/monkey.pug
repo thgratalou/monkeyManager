@@ -5,8 +5,9 @@ html
     body
         include header.pug
         h4 Liste des singes :
+        -var name =""
         ul
             for monkey in monkeys
                 - name = monkey.name
-                li
+                li #{name}
         include footer.pug

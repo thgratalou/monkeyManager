@@ -1,6 +1,6 @@
 body{
     background-image: url("static/pictures/background.jpg");
-    background-clip: content-box;
+    background-size: cover;
 }
 
 .TitleHeader{
@@ -19,4 +19,8 @@ body{
 }
 .enclosure{
     float: right;
+}
+.img_button{
+    width: 10%;
+    height: 20%;
 }
