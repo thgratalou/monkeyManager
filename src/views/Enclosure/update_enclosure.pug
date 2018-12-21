@@ -1,0 +1,12 @@
+html
+    head
+        style
+            include style.css
+    body
+        include header.pug
+        h4 Bienvenue sur la page de création d'un singe !
+        form(action='/create_enclosure', method='POST')
+            p
+                | Nom: 
+                input(type='text', name='name', value='')
+                input(type='submit', value='Créer cet enclos')
