@@ -35,50 +35,61 @@ const models = require('./models/index');
   })
 
 //Get some specified monkey with enclosure
-  app.get('/Monkeys/:enclosure', function(req, res){
-    models.Monkeys.findAndCountAll({
+  app.get('/Monkeys/:enclosure_name', function(req, res){
+    models.Monkeys.findAll({
       where: {enclosure_name: req.params.enclosure_name}
     })
     .then((monkey) =>{
-      res.render('monkey', {title : 'Les singes par enclos : ', Monkeys : monkey})
+      if(monkey != null) res.render('monkey', {title : 'Les singes par enclos : ', Monkeys : monkey})
+      else res.status(404).send("Something blew up ;)")
     });
   })
 
 //Get a monkey with his name
   app.get('/Monkeys/:name', function(req, res){
-    models.Monkeys.findAndCountAll({
+    models.Monkeys.findAll({
       where: {name: req.params.name}
     })
     .then((monkey) =>{
-      res.render('monkey', {title : 'Les singes : ', Monkeys : monkey})
+      if(monkey != null) res.render('monkey', {title : 'Les singes par nom : ', Monkeys : monkey})
+      else res.status(404).send("Something blew up ;)")
     });
   })
 
   //Get a monkey with his id
   app.get('/Monkeys/:id', function(req, res){
-    models.Monkeys.findAndCountAll({
-      where: {name: req.params.id}
-    })
-    .then((monkey) =>{
-      res.render('monkey', {title : 'Les singes : ', Monkeys : monkey})
-    });
+    models.Monkeys.findById(req.params.id)
+      .then((monkey) =>{
+        if(monkey != null) res.render('monkeyID', {name : monkey.name, enclosure : monkey.enclosure_name, id : monkey.id})
+        else res.status(404).send("Something blew up ;)")
+      })
   })
 
 //Get all the enclosures
   app.get('/Enclosures', function (req, res) {
     models.Enclosures.findAll()
       .then((enclosure) => {
-        res.render('enclosure', {title : 'Les enclos', Enclosures : enclosure})
+        res.render('enclosure', {Enclosures : enclosure})
       })
   })
 
 //Get an Enclosure with his name
-  app.get('/Enclosure/:name/get', function(req, res){
+  app.get('/Enclosures/:name', function(req, res){
     models.Enclosures.findAll({
       where: {name: req.params.name}
     })
     .then((enclosure) =>{
-      res.send(enclosure)
+      if(enclosure != null) res.render('enclosure', {Enclosures : enclosure})
+      else res.status(404).send("Something blew up ;)")
+    });
+  })
+
+  //Get an Enclosure with his ID
+  app.get('/Enclosures/:id', function(req, res){
+    models.Enclosures.findById(req.params.id)
+    .then((enclosure) =>{
+      if(enclosure != null) res.render('enclosureID', {name : enclosure.name, id : enclosure.id})
+      else res.status(404).send("Something blew up ;)")
     });
   })
 
