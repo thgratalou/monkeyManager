@@ -14,3 +14,10 @@ Remarques :
         - Le css se trouve dans le fichiers style.css
         - La gestion de la page d'accueil se fait dans index.
         - Le header et le footer sont gérés dans header.pug & footer.pug
+    - Nous n'avons pas eu le temps de lier enclos et singe.
+    - Nous n'avons pas réussi à faire fonctionner les pages de recherches par noms/id/enclos. Néanmoins, vous pouvez utiliser la recherche dans la base avec les adresses suivantes :
+        - /Monkeys/id/:id => Recherche par ID
+        - /Monkeys/name/:name => Recherche par nom
+        - /Monkeys/enclosure/:enclosure => Recherche par enclos
+        - /Enclosures/name/:name => Recherche par nom
+        - /Enclosures/id/:id => Recherche par ID
