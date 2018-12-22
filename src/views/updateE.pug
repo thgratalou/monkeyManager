@@ -1,0 +1,13 @@
+html
+    head
+        style
+            include style.css
+    body
+        include header.pug
+        h4 Bienvenue sur la page de modification d'un enclos ! Vous désirez modifier l'enclos #{enclosure.id}
+        form(action='updateE/'+enclosure.id, method='POST')
+            p
+                | Nom : 
+                input(type='text', name='name', value=enclosure.name)
+                input(type='submit', value='Modifier cet enclos')
+            include footer.pug

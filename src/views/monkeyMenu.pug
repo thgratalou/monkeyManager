@@ -1,0 +1,22 @@
+html
+    head
+        style
+            include style.css
+    body
+        div
+            include header.pug
+        div(class="menu")
+            div(class="menu_tile")
+                a(href='/Monkeys/all')
+                    img(src="static/pictures/monkeyC.png" alt="Cliquez ici !" class="img_button")
+            div(class="menu_tile")
+                a(href='/Monkeys/name')
+                    img(src="static/pictures/monkeyV.png" alt="Cliquez ici !" class="img_button")
+            div(class="menu_tile")
+                a(href='/Monkeys/id')
+                    img(src="static/pictures/enclosureC.png" alt="Cliquez ici !" class="img_button")
+            div(class="/Monkeys/enclosure")
+                a(href="/Enclosures")
+                    img(src="static/pictures/enclosureV.png" alt="Cliquez ici !" class="img_button")
+        div
+            include footer.pug

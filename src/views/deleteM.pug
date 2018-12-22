@@ -1,0 +1,12 @@
+html
+    head
+        style
+            include style.css
+    body
+        include header.pug
+        h4 Bienvenue sur la page de suppression d'un singe ! Vous désirez supprimer le singe #{monkey.id}
+        form(action='/deleteM/'+monkey.id, method='POST')
+            li Nom : #{monkey.name}
+            li Enclos : #{monkey.enclosure_name}
+            input(type='submit', value='Supprimer ce singe')
+        include footer.pug

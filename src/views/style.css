@@ -36,3 +36,18 @@ body{
     flex-grow: 1;
     flex-basis: 16%;
 }
+
+.button{
+    background-color: grey;
+    color: white;
+    padding: 14px 25px;
+    margin: 14px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.button:hover{
+    background-color: lightgrey;
+    color: black;
+}

@@ -28,8 +28,12 @@ const models = require('./models/index');
   })
   //Monkeys :
     //GET
-      //Get all the monkey
+      //Get the menu for Monkeys
         app.get('/Monkeys', function (req, res) {
+          res.render('monkeyMenu')
+        })
+      //Get all the monkey
+        app.get('/Monkeys/all', function (req, res) {
           models.Monkeys.findAll()
             .then((monkey) => {
               res.render('monkey', {Monkeys : monkey})
@@ -73,16 +77,24 @@ const models = require('./models/index');
         })
 
       //Update a Monkey
-        app.get('/updateM/:id', function (req, res) {
+        app.get('/Monkeys/updateM/:id', function (req, res) {
           models.Monkeys.findById(req.params.id)
           .then((monkey) =>{
             res.render('updateM', {monkey});
           })
         })
-    
+
+      //Delete a monkey
+        app.get('/Monkeys/deleteM/:id', function (req, res) {
+          models.Monkeys.findById(req.params.id)
+          .then((monkey) =>{
+            res.render('deleteM', {monkey});
+          })
+        })
+
     //POST
       //Create a monkey
-        app.post('/create_monkey', function(req, res) {
+        app.post('/createM', function(req, res) {
           models.Monkeys.create({
             name: req.body.name,
             enclosure_name: req.body.enclosure_name
@@ -103,12 +115,12 @@ const models = require('./models/index');
           })
         })
 
-    //DELETE
-        app.delete('/Monkeys/delete/:id', function(req, res) {
+      //Delete a monkey
+        app.post('/deleteM/:id', function(req, res) {
           models.Monkeys.findById(req.params.id)
           .then((monkey) => {
             monkey.destroy();
-            res.render('confM');
+            res.render('confMD');
           })
         })
   
@@ -116,48 +128,91 @@ const models = require('./models/index');
   ////////////////////////////////////////////////////////////////////////////////////////////////
 
   //Enclosure
-    //Get all the enclosures
-      app.get('/Enclosures', function (req, res) {
-        models.Enclosures.findAll()
-          .then((enclosure) => {
-            res.render('enclosure', {Enclosures : enclosure})
-          })
-      })
-
-    //Get an Enclosure with his name
-      app.get('/Enclosures/name/:name', function(req, res){
-        models.Enclosures.findAll({
-          where: {name: req.params.name}
+    //GET
+      //Get the Enclosures menu
+        app.get('/Enclosures', function (req, res) {
+          res.render('enclosureMenu')
         })
+        
+      //Get all the enclosures
+        app.get('/Enclosures/all', function (req, res) {
+          models.Enclosures.findAll()
+            .then((enclosure) => {
+              res.render('enclosure', {Enclosures : enclosure})
+            })
+        })
+
+      //Get an Enclosure with his name
+        app.get('/Enclosures/name/:name', function(req, res){
+          models.Enclosures.findAll({
+            where: {name: req.params.name}
+          })
+          .then((enclosure) =>{
+            if(enclosure != null) res.render('enclosure', {Enclosures : enclosure})
+            else res.status(404).send("Something blew up ;)")
+          });
+        })
+
+      //Get an Enclosure with his ID
+        app.get('/Enclosures/id/:id', function(req, res){
+          models.Enclosures.findById(req.params.id)
+          .then((enclosure) =>{
+            if(enclosure != null) res.render('enclosureID', {name : enclosure.name, id : enclosure.id})
+            else res.status(404).send("Something blew up ;)")
+          });
+        })
+
+      //Confirmation for create Enclosure
+        app.get('/createE', function (req, res) {
+          res.render('create_enclosure');
+        })
+
+      //Update an Enclosure
+      app.get('/Enclosures/updateE/:id', function (req, res) {
+        models.enclosure.findById(req.params.id)
         .then((enclosure) =>{
-          if(enclosure != null) res.render('enclosure', {Enclosures : enclosure})
-          else res.status(404).send("Something blew up ;)")
-        });
+          res.render('updateE', {enclosure});
+        })
       })
 
-    //Get an Enclosure with his ID
-      app.get('/Enclosures/id/:id', function(req, res){
-        models.Enclosures.findById(req.params.id)
-        .then((enclosure) =>{
-          if(enclosure != null) res.render('enclosureID', {name : enclosure.name, id : enclosure.id})
-          else res.status(404).send("Something blew up ;)")
-        });
-      })
+      //Delete a monkey
+        app.get('/Monkeys/deleteM/:id', function (req, res) {
+          models.Monkeys.findById(req.params.id)
+          .then((monkey) =>{
+            res.render('deleteM', {monkey});
+          })
+        })
 
-    //Confirmation for create Enclosure
-      app.get('/createE', function (req, res) {
-        res.render('create_enclosure');
-      })
-
+    //POST
     //Create an enclosure
-      app.post('/create_enclosure', function(req, res) {
+      app.post('/createE', function(req, res) {
         models.Enclosures.create({
           name: req.body.name
         })
         .then(()=> {
-          res.render('confirmationE')
+          res.render('confEC')
         })
       })
+    
+      //Update a monkey
+        app.post('/updateE/:id', function(req, res){
+          models.Enclosure.update(req.body,
+            {where: {id:req.params.id}
+          },
+          {name : req.body.name})
+          .then(()=> {
+            res.render('confEU');
+          })
+        })
+
+      //Delete a monkey
+        app.post('/deleteE/:id', function(req, res) {
+          models.Monkeys.findById(req.params.id)
+          .then((monkey) => {
+            monkey.destroy();
+            res.render('confED');
+          })
+        })
 
   // Synchronize models
   models.sequelize.sync().then(function() {
