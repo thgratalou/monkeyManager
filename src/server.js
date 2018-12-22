@@ -67,16 +67,16 @@ const models = require('./models/index');
             })
         })
 
-      //Confirmation for create Monkey
+      //Create a Monkey
         app.get('/createM', function (req, res) {
-          res.render('create_monkey');
+          res.render('createM');
         })
 
-      //Confirmation for update a Monkey
+      //Update a Monkey
         app.get('/updateM/:id', function (req, res) {
           models.Monkeys.findById(req.params.id)
-          .then((monkey)=>{
-            res.render('update_monkey', {name : monkey.name, enclosure : monkey.enclosure, id : monkey.id});
+          .then((monkey) =>{
+            res.render('updateM', {monkey});
           })
         })
     
@@ -88,18 +88,18 @@ const models = require('./models/index');
             enclosure_name: req.body.enclosure_name
           })
           .then(()=> {
-            res.render('confirmationM')
+            res.render('confMC')
           })
         })
 
-    //PUT
       //Update a monkey
-        app.put('/update_monkey/:id', function(req, res){
+        app.post('/updateM/:id', function(req, res){
           models.Monkeys.update(req.body,
             {where: {id:req.params.id}
-          })
-            .then(() => {
-            res.render('confirmationMU')
+          },
+          {name : req.body.name, enclosure_name : req.body.enclosure})
+          .then(()=> {
+            res.render('confMU');
           })
         })
 
@@ -108,7 +108,7 @@ const models = require('./models/index');
           models.Monkeys.findById(req.params.id)
           .then((monkey) => {
             monkey.destroy();
-            res.render('confirmationM');
+            res.render('confM');
           })
         })
   

@@ -7,10 +7,17 @@ html
         h4 Liste des enclos :
         -var name =""
         -var id =""
+        -var monkeyName =""
+        -var monkeyID =""
         ul
             li Nom ID
             for enclosure in Enclosures
                 - name = enclosure.name
                 - id = enclosure.id
                 li #{name} #{id}
+                    for monkey in Monkeys
+                        -monkeyName = monkey.name
+                        -monkeyID = monkey.id
+                        li #{monkeyName} #{monkeyID}
+
         include footer.pug

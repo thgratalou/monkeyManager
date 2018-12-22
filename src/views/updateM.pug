@@ -4,14 +4,12 @@ html
             include style.css
     body
         include header.pug
-        h4 Bienvenue sur la page de modification d'un singe !
-        form(action='/update_monkey/'+id, method='PUT')
+        h4 Bienvenue sur la page de modification d'un singe ! Vous désirez modifier le singe #{monkey.id}
+        form(action='/updateM/'+monkey.id, method='POST')
             p
-                | Nom:
-                input(type='text', name='name', value=name)
-                |          Enclos: 
-                input(type='text', name='enclosure_name', value=enclosure)
+                | Nom : 
+                input(type='text', name='name', value=monkey.name)
+                | Enclos : 
+                input(type='text', name='enclosure_name', value=monkey.enclosure_name)
                 input(type='submit', value='Modifier ce singe')
-
-            p #{id}
             include footer.pug

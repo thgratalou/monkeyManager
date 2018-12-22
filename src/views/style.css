@@ -14,24 +14,25 @@ body{
     color: darkgray;
 }
 
-.monkey{
-    float: left;
-}
-.enclosure{
-    float: right;
-}
-.img_button{
-    width: 10%;
-    height: 20%;
-}
-
 .footer{
     background-image: url("static/pictures/footer_background.jpg");
     background-size: cover;
-    position: fixed;
     left: 0;
     bottom: 0;
+    position: fixed;
     width: 100%;
     color: white;
     text-align: center;
+}
+
+.menu{
+    display: flex;
+    flex-direction: line;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.menu_tile{
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
 }

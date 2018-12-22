@@ -3,13 +3,20 @@ html
         style
             include style.css
     body
-        include header.pug
-        div(class="monkey")
-            p Vous voulez créer un singe ?
-            a(href='createM')
-                img(src="static/pictures/monkey.jpg" alt="Cliquez ici !" class="img_button")
-        div(class="enclosure")
-            p Vous voulez créer un enclos ?
-            a(href='createE')
-                img(src="static/pictures/enclosure.jpg" alt="Cliquez ici !" class="img_button")
-        include footer.pug
+        div
+            include header.pug
+        div(class="menu")
+            div(class="menu_tile")
+                a(href='createM')
+                    img(src="static/pictures/monkeyC.png" alt="Cliquez ici !" class="img_button")
+            div(class="menu_tile")
+                a(href='/Monkeys')
+                    img(src="static/pictures/monkeyV.png" alt="Cliquez ici !" class="img_button")
+            div(class="menu_tile")
+                a(href='createE')
+                    img(src="static/pictures/enclosureC.png" alt="Cliquez ici !" class="img_button")
+            div(class="menu_tile")
+                a(href="/Enclosures")
+                    img(src="static/pictures/enclosureV.png" alt="Cliquez ici !" class="img_button")
+        div
+            include footer.pug
