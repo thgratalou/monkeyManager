@@ -32,12 +32,28 @@ const models = require('./models/index');
         app.get('/Monkeys', function (req, res) {
           res.render('monkeyMenu')
         })
+
       //Get all the monkey
         app.get('/Monkeys/all', function (req, res) {
           models.Monkeys.findAll()
             .then((monkey) => {
               res.render('monkey', {Monkeys : monkey})
             })
+        })
+
+      //Get the search page for name
+        app.get('/Monkeys/name', function (req, res) {
+          res.render('searchNameM')
+        })
+
+      //Get the search page for Enclosure
+        app.get('/Monkeys/enclosure', function (req, res) {
+          res.render('searchEnclosureM')
+        })
+
+      //Get the search page for ID
+        app.get('/Monkeys/id', function (req, res) {
+          res.render('searchIDM')
         })
 
       //Get some specified monkey with enclosure
@@ -142,6 +158,16 @@ const models = require('./models/index');
             })
         })
 
+      //Get the search page for name
+        app.get('/Enclosures/name', function (req, res) {
+          res.render('searchNameE')
+        })
+
+      //Get the search page for ID
+        app.get('/Enclosures/enclosure', function (req, res) {
+          res.render('searchIDE')
+        })
+
       //Get an Enclosure with his name
         app.get('/Enclosures/name/:name', function(req, res){
           models.Enclosures.findAll({
@@ -168,12 +194,12 @@ const models = require('./models/index');
         })
 
       //Update an Enclosure
-      app.get('/Enclosures/updateE/:id', function (req, res) {
-        models.Enclosures.findById(req.params.id)
-        .then((enclosure) =>{
-          res.render('updateE', {enclosure});
+        app.get('/Enclosures/updateE/:id', function (req, res) {
+          models.Enclosures.findById(req.params.id)
+          .then((enclosure) =>{
+            res.render('updateE', {enclosure});
+          })
         })
-      })
 
       //Delete an Enclosure
         app.get('/Enclosures/deleteE/:id', function (req, res) {
@@ -184,15 +210,15 @@ const models = require('./models/index');
         })
 
     //POST
-    //Create an enclosure
-      app.post('/createE', function(req, res) {
-        models.Enclosures.create({
-          name: req.body.name
+      //Create an enclosure
+        app.post('/createE', function(req, res) {
+          models.Enclosures.create({
+            name: req.body.name
+          })
+          .then(()=> {
+            res.render('confEC')
+          })
         })
-        .then(()=> {
-          res.render('confEC')
-        })
-      })
     
       //Update an Enclosure
         app.post('/updateE/:id', function(req, res){

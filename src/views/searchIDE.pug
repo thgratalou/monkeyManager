@@ -1,0 +1,13 @@
+html
+    head
+        style
+            include style.css
+    body
+        include header.pug
+        h4 Bienvenue sur la page de recherche par ID d'un enclos !
+        form(action='/Enclosures/id/'+id, method='GET')
+            p
+                | Recherche : 
+                input(type='text', name='id', placeholder='Entrez votre recherche')
+                input(type='submit', value='Recherchez moi cet enclos !')
+            include footer.pug

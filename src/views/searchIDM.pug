@@ -4,10 +4,10 @@ html
             include style.css
     body
         include header.pug
-        h4 Bienvenue sur la page de recherche par nom d'un singe !
-        form(action='/Monkeys/name/'+search, method='GET')
+        h4 Bienvenue sur la page de recherche par ID d'un singe !
+        form(action='/Monkeys/id/'+id, method='GET')
             p
                 | Recherche : 
-                input(type='text', name='search', placeholder='Entrez votre recherche')
+                input(type='text', name='id', placeholder='Entrez votre recherche')
                 input(type='submit', value='Recherchez moi ce singe !')
             include footer.pug

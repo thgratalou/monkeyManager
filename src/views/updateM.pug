@@ -5,7 +5,7 @@ html
     body
         include header.pug
         h4 Bienvenue sur la page de modification d'un singe ! Vous désirez modifier le singe #{monkey.id}
-        form(action='/updateM/'+monkey.id, method='POST')
+        form(action='/updateM/'+ monkey.id, method='POST')
             p
                 | Nom : 
                 input(type='text', name='name', value=monkey.name)
