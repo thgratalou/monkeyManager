@@ -164,22 +164,22 @@ const models = require('./models/index');
 
       //Confirmation for create Enclosure
         app.get('/createE', function (req, res) {
-          res.render('create_enclosure');
+          res.render('createE');
         })
 
       //Update an Enclosure
       app.get('/Enclosures/updateE/:id', function (req, res) {
-        models.enclosure.findById(req.params.id)
+        models.Enclosures.findById(req.params.id)
         .then((enclosure) =>{
           res.render('updateE', {enclosure});
         })
       })
 
-      //Delete a monkey
-        app.get('/Monkeys/deleteM/:id', function (req, res) {
-          models.Monkeys.findById(req.params.id)
-          .then((monkey) =>{
-            res.render('deleteM', {monkey});
+      //Delete an Enclosure
+        app.get('/Enclosures/deleteE/:id', function (req, res) {
+          models.Enclosures.findById(req.params.id)
+          .then((enclosure) =>{
+            res.render('deleteE', {enclosure});
           })
         })
 
@@ -194,9 +194,9 @@ const models = require('./models/index');
         })
       })
     
-      //Update a monkey
+      //Update an Enclosure
         app.post('/updateE/:id', function(req, res){
-          models.Enclosure.update(req.body,
+          models.Enclosures.update(req.body,
             {where: {id:req.params.id}
           },
           {name : req.body.name})
@@ -207,9 +207,9 @@ const models = require('./models/index');
 
       //Delete a monkey
         app.post('/deleteE/:id', function(req, res) {
-          models.Monkeys.findById(req.params.id)
-          .then((monkey) => {
-            monkey.destroy();
+          models.Enclosures.findById(req.params.id)
+          .then((enclosure) => {
+            enclosure.destroy();
             res.render('confED');
           })
         })

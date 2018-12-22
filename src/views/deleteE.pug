@@ -1,0 +1,11 @@
+html
+    head
+        style
+            include style.css
+    body
+        include header.pug
+        h4 Bienvenue sur la page de suppression d'un enclos ! Vous désirez supprimer l'enclos #{enclosure.id}
+        form(action='/deleteE/'+enclosure.id, method='POST')
+            li Nom : #{enclosure.name}
+            input(type='submit', value='Supprimer cet enclos')
+        include footer.pug
